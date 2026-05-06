@@ -1,0 +1,12 @@
+root_folder: root_folder
+
+defaults:
+  credentials_id: credentials_id
+  script_id: golden_pipe
+  branch_regex: "^(?:dev|qa|main|master)$"
+
+folders:
+  - name: unidad_negocio
+    jobs:
+      - name: nombre_del_job
+        repo_url: repo_url
