@@ -39,8 +39,8 @@ def load_config(path: str) -> JenkinsFactoryConfig:
         for job in folder.get("jobs", []):
             jobs.append(
                 JobConfig(
-                    name=job["name"],
-                    repo_url=job["repo_url"],
+                    name=str(job["name"]).strip(),
+                    repo_url=str(job["repo_url"]).strip(),
                     branch_regex=job.get(
                         "branch_regex",
                         defaults.get("branch_regex", "^(?:dev|qa|main|master)$"),
@@ -56,9 +56,9 @@ def load_config(path: str) -> JenkinsFactoryConfig:
                 )
             )
 
-        folders.append(FolderConfig(name=folder["name"], jobs=jobs))
+        folders.append(FolderConfig(name=str(folder["name"]).strip(), jobs=jobs))
 
     return JenkinsFactoryConfig(
-        root_folder=raw["root_folder"],
+        root_folder=str(raw["root_folder"]).strip(),
         folders=folders,
     )
